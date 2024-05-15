@@ -13,7 +13,7 @@ export class CardHelper {
      * @returns
      */
     public async render(member: GuildMember | PartialGuildMember, textTitle: string, textMessage: string) {
-        if (!member || member.user.bot) return;
+        if (!member) return;
 
         const card = new Canvas.Welcome();
         theme.setRndWelcomeStyle(card);

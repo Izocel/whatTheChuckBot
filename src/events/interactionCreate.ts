@@ -1,28 +1,23 @@
-import { client } from "..";
-import { Event } from "../class/event";
-import { ExtendedInteraction } from "../typings/command";
 import { CommandInteractionOptionResolver } from "discord.js";
+import { ExtendedInteraction } from "../typings/commandType";
+import { ClientEvent } from "../class/clientEvent";
+import { client } from "..";
 
-export default new Event("interactionCreate", async (interaction) => {
-    // Chat Input Commands
-    if (interaction.isCommand()) {
-        if (interaction.member.user.bot) return;
-        const command = client.commands.get(interaction.commandName);
-        
-        if (!command) {
-            await interaction.deferReply({ephemeral: true});
-            interaction.followUp({
-                ephemeral: true,
-                content: "From Command: I dont know what to do with that!\nThis command may be not implemented yet!:x:"
-            });
+export default new ClientEvent<"interactionCreate">({
+    execute: async (event) => {
+        event.
+        if (!event.isCommand() || !event?.commandName || event.user.bot) {
             return;
         }
 
+        console.log("CMDDDD")
+        const command = client.commands.get(event.commandName);
         return command.run({
-            args: interaction.options as CommandInteractionOptionResolver,
             client,
-            interaction: interaction as ExtendedInteraction,
+            event: event as ExtendedInteraction,
+            args: event.options as CommandInteractionOptionResolver,
         });
     }
-
 });
+
+

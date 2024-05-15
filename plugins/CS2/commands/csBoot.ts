@@ -19,9 +19,7 @@ export default new Command({
             type: ApplicationCommandOptionType.Integer
         }
     ],
-    run: async ({ interaction, args }) => {
-        if (interaction.member.user.bot) return;
-
+    execute: async ({ interaction, args }) => {
         if (!hasCs2DockerAccess(interaction.member)) {
             await interaction.reply({ content: "❌ You shall not pass! 🧙", ephemeral: true });
             return;

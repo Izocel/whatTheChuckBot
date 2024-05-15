@@ -1,4 +1,4 @@
-import { Event } from "../../../src/class/event";
+import { Event } from "../../../src/typings/event";
 import { Server, RCON } from '@fabricio-191/valve-server-query';
 import { getGuildConfigsById } from "../../../src/configs/guildsConfigs";
 import { textToLines, toSafeJsonString } from "../../../src/helpers/helpers";

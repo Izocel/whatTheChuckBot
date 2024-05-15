@@ -23,10 +23,8 @@ export default new Command({
             channelTypes: [ChannelType.GuildText]
         }
     ],
-    run: async ({ client, interaction, args }) => {
+    execute: async ({ client, interaction, args }) => {
         try {
-            if (interaction.member.user.bot) return;
-
             const guild = interaction.guild;
             const member = args.getMember("member") as GuildMember
                 ?? interaction.member;
@@ -50,7 +48,7 @@ export async function sendBanner(
     channelOverride?: any,
     args?: any,
     interaction?: any) {
-    if (!member || member.user.bot) return;
+    if (!member) return;
     
     const defConfigs = getGuildConfigsById("default");
     const guildConfigs = getGuildConfigsById(member.guild.id) ?? defConfigs;

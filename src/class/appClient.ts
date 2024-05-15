@@ -16,16 +16,13 @@ import {
     ClientEvents,
     GatewayIntentBits,
     Partials,
-    REST,
-    Routes,
     ApplicationCommandDataResolvable
 } from "discord.js";
 import { ytFetch } from "..";
 import { PathLike } from "fs";
-import { Event } from "./event";
+import { Event } from "../typings/event";
 import { CommandType } from "../typings/command";
 import { AppLogger } from "./Loggers/appLogger";
-import { RegisterCommandsOptions } from "../typings/client";
 import { getDirectories, getFiles, importFile } from "../helpers/helpers";
 
 
@@ -222,8 +219,8 @@ export class AppClient extends Client {
             if (!match) return;
 
             const event: Event<keyof ClientEvents> = await importFile(filePath);
-
-            this.on(event.event, event.run);
+            this.on(event.event, event.execute);
+            
             console.log("\nRegistered", filePath);
         }
     }

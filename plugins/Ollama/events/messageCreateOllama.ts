@@ -1,6 +1,6 @@
 //https://github.com/ollama/ollama/blob/main/docs/api.md
 import { Message, User } from "discord.js";
-import { Event } from "../../../src/class/event";
+import { Event } from "../../../src/typings/event";
 import { HttpFetcher } from "../../../src/class/httpFetcher";
 import { getDefaultConfigs } from "../../../src/configs/guildsConfigs";
 import { textToAttachment, textToLines } from "../../../src/helpers/helpers";

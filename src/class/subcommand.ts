@@ -14,7 +14,7 @@ export class SubCommand {
         this.commandRunFunction = runFunction;
     }
 
-    public async run(commandContext:CommandContext): Promise<FollowUpObj> {
+    public async execute(commandContext:CommandContext): Promise<FollowUpObj> {
 
         try{
             if (!this.commandRunFunction){

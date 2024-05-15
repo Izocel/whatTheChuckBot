@@ -5,8 +5,7 @@ export default new Command({
     name: "help",
     public: true,
     description: "Will display help for commands. (this)",
-    run: async ({ interaction }) => {
-        if (interaction.user.bot) return;
+    execute: async ({ interaction }) => {
         await interaction.reply({ content: await client.getCommandsHelp(), ephemeral: true });
     }
 });

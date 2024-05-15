@@ -1,8 +1,12 @@
-import { Event } from "../class/event";
-import { sendBanner } from "../commands/banner";
+import { ClientEvent } from "../class/clientEvent";
+import { ClientEvents } from "discord.js";
 
-export default new Event("guildMemberRemove", async (member, interaction?) => {
-    if (!member || member.user.bot) return;
-    return sendBanner(member, "goodbye");
+type eventArgs = ClientEvents["messageCreate"];
+
+export default new ClientEvent<"messageCreate">({
+    execute: async (eventArgs: eventArgs) => {
+
+        const [message] = eventArgs;
+
+    }
 });
-

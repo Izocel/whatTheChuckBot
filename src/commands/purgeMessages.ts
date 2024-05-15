@@ -21,10 +21,8 @@ export default new Command({
             required: false
         }
     ],
-    run: async ({ client, interaction, args }) => {
+    execute: async ({ client, interaction, args }) => {
         try {
-            if (interaction.member.user.bot) return;
-
             if (interaction.guild.ownerId !== interaction.member.id &&
                 !interaction.member.roles.cache.find(role => role.name.toLowerCase() === "owner")) {
                 await interaction.reply({ content: "❌ This command is for `owner` only. 🧙", ephemeral: true });
